@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- <script
+      src="https://cdn.tiny.cloud/1/qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc/tinymce/6/tinymce.min.js"
+      referrerpolicy="origin"
+    ></script> -->
+    <script src="tinymce/js/tinymce/tinymce.min.js"></script>
+    <script src="/lib/nativebridge.js"></script>
+    <script>
+      tinymce.init({
+        selector: "#mytextarea",
+        menubar: false,
+        statusbar: false,
+        plugins:
+          "preview importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap quickbars emoticons",
+        toolbar:
+          "undo redo | bold italic underline strikethrough | fontfamily fontsize blocks | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl",
+        content_style:
+          "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+      });
+    </script>
+    <script>
+      nativebridge.emit("editor", {
+        foo: <p>웹뷰에서 네이티브로 전송한 텍스트</p>,
+      });
+      nativebridge.on("editor", (data) => {
+        alert(JSON.stringify(data));
+      });
+    </script>
+  </head>
+
+  <body>
+    <h3>TinyMCE WebView에 넣어서 띄우면...</h3>
+    <form method="post">
+      <textarea id="mytextarea">Hello, World!</textarea>
+    </form>
+  </body>
+</html>
