@@ -57,9 +57,9 @@
       // myVar = Android.getFromAndroid();
       // tinymce.get("mytextarea").setContent(JSON.stringify(myVar));
 
-      window.webkit.messageHandlers.iOSNative.postMessage("Bla Bla Bla");
+      window.webkit.messageHandlers.iOSNative.postMessage(tinymce.activeEditor.getContent("myTextarea"));
     }
-
+      
     function myCustomOnChangeHandler(inst) {
       // alert("Some one modified something");
       alert("The HTML is now:" + inst.getBody().innerHTML);
