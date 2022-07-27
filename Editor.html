@@ -65,27 +65,29 @@
       
     }
       
-      function getMessgaeBody() {
-          /*
-           Ucware.showToast(
-            JSON.stringify(tinymce.activeEditor.getContent("myTextarea"))
-          );
-           */
-          
+      function getMessgaeBodyiOS() {
           window.webkit.messageHandlers.iOSNative.postMessage(tinymce.activeEditor.getContent("myTextarea"));
       }
       
-      function setMessageBody(bodyData) {
-          //console.log(bodyData)
-          window.webkit.messageHandlers.iOSNative.postMessage("setMessageBody iOS init");
-          //Ucware.showToast("setMessageBody AOS init");
+      function setMessageBodyiOS(bodyData) {
+          window.webkit.messageHandlers.iOSNative.postMessage("setMessageBody iOS init"  + bodyData);
+      }
+      
+      
+      function getMessgaeBodyAOS() {
+           Ucware.showToast(
+            JSON.stringify(tinymce.activeEditor.getContent("myTextarea"))
+          );
           
       }
       
+      function setMessageBodyAOS(bodyData) {
+          Ucware.showToast("setMessageBody AOS init " + bodyData);
+      }
 
     function myCustomOnChangeHandler(inst) {
       // alert("Some one modified something");
-      alert("The HTML is now:" + inst.getBody().innerHTML);
+      alert("The HTML is now:" + inst);
     }
   </script>
 </html>
