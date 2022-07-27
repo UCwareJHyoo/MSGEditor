@@ -75,14 +75,14 @@
       
       
       function getMessgaeBodyAOS() {
-           Ucware.showToast(
+           Ucware.getMessgaeBodyAOS(
             JSON.stringify(tinymce.activeEditor.getContent("myTextarea"))
           );
           
       }
       
       function setMessageBodyAOS(bodyData) {
-          Ucware.showToast("setMessageBody AOS init " + bodyData);
+          Ucware.setMessageBodyAOS("setMessageBody AOS init " + bodyData);
       }
 
     function myCustomOnChangeHandler(inst) {
