@@ -9,10 +9,16 @@
       referrerpolicy="origin"
     ></script> -->
     <script src="tinymce/js/tinymce/tinymce.min.js"></script>
-    <script src="/lib/nativebridge.js"></script>
     <script>
       tinymce.init({
+        // theme: 'silver',
+        // mobile: {
+        //   theme: 'mobile',
+        //   plugins: 'autosave lists autolink',
+        //   toolbar: 'undo bold italic styleselect image bullist numlist fontsizeselect '
+        // },
         selector: "#mytextarea",
+        onchange_callback: "myCustomOnChangeHandler",
         menubar: false,
         statusbar: false,
         plugins:
@@ -23,14 +29,6 @@
           "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
       });
     </script>
-    <script>
-      nativebridge.emit("editor", {
-        foo: <p>웹뷰에서 네이티브로 전송한 텍스트</p>,
-      });
-      nativebridge.on("editor", (data) => {
-        alert(JSON.stringify(data));
-      });
-    </script>
   </head>
 
   <body>
@@ -38,5 +36,33 @@
     <form method="post">
       <textarea id="mytextarea">Hello, World!</textarea>
     </form>
+    <input
+      type="button"
+      value="Say hello"
+      onClick="showAndroidToast('Hello Android!')"
+    />
+    <input type="button" value="Get from android" onClick="getFromAndroid()" />
+    <!-- <input type="button" value="Say hello" onClick="myCustomOnChangeHandler('Hello Android!')" /> -->
   </body>
+  <script type="text/javascript">
+    var myContent = tinymce.get("mytextarea").getContent({ format: "text" });
+    function showAndroidToast(toast) {
+      console.log("myContent", tinymce.activeEditor.getContent("myTextarea"));
+      Ucware.showToast(
+        JSON.stringify(tinymce.activeEditor.getContent("myTextarea"))
+      );
+    }
+    var myVar = null;
+    function getFromAndroid() {
+      // myVar = Android.getFromAndroid();
+      // tinymce.get("mytextarea").setContent(JSON.stringify(myVar));
+
+      window.webkit.messageHandlers.iOSNative.postMessage("Bla Bla Bla");
+    }
+
+    function myCustomOnChangeHandler(inst) {
+      // alert("Some one modified something");
+      alert("The HTML is now:" + inst.getBody().innerHTML);
+    }
+  </script>
 </html>
