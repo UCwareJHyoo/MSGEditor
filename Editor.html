@@ -54,12 +54,30 @@
     }
     var myVar = null;
     function getFromAndroid() {
-      // myVar = Android.getFromAndroid();
-      // tinymce.get("mytextarea").setContent(JSON.stringify(myVar));
-
+        
+      Ucware.showToast(
+        JSON.stringify(tinymce.activeEditor.getContent("myTextarea"))
+      );
       window.webkit.messageHandlers.iOSNative.postMessage(tinymce.activeEditor.getContent("myTextarea"));
+      
     }
       
+      function getMessgaeBody() {
+          Ucware.showToast(
+            JSON.stringify(tinymce.activeEditor.getContent("myTextarea"))
+          );
+          
+          window.webkit.messageHandlers.iOSNative.postMessage(tinymce.activeEditor.getContent("myTextarea"));
+      }
+      
+      function setMessageBody(bodyData) {
+          console.log(bodyData)
+          window.webkit.messageHandlers.iOSNative.postMessage("setMessageBody iOS init");
+          Ucware.showToast("setMessageBody AOS init");
+          
+      }
+      
+
     function myCustomOnChangeHandler(inst) {
       // alert("Some one modified something");
       alert("The HTML is now:" + inst.getBody().innerHTML);
