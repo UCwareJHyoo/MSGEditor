@@ -55,23 +55,28 @@
     var myVar = null;
     function getFromAndroid() {
         
-      Ucware.showToast(
+      /*
+       Ucware.showToast(
         JSON.stringify(tinymce.activeEditor.getContent("myTextarea"))
       );
+       */
+      
       window.webkit.messageHandlers.iOSNative.postMessage(tinymce.activeEditor.getContent("myTextarea"));
       
     }
       
       function getMessgaeBody() {
-          Ucware.showToast(
+          /*
+           Ucware.showToast(
             JSON.stringify(tinymce.activeEditor.getContent("myTextarea"))
           );
+           */
           
           window.webkit.messageHandlers.iOSNative.postMessage(tinymce.activeEditor.getContent("myTextarea"));
       }
       
       function setMessageBody(bodyData) {
-          console.log(bodyData)
+          //console.log(bodyData)
           window.webkit.messageHandlers.iOSNative.postMessage("setMessageBody iOS init");
           Ucware.showToast("setMessageBody AOS init");
           
