@@ -67,10 +67,13 @@
       
       function getMessageBodyiOS() {
           window.webkit.messageHandlers.iOSNative.postMessage(tinymce.activeEditor.getContent("myTextarea"));
+          
       }
       
       function setMessageBodyiOS(bodyData) {
-          window.webkit.messageHandlers.iOSNative.postMessage("setMessageBody iOS init"  + bodyData);
+          tinymce.activeEditor.setContent(bodyData);
+          alert("setMessageBodyiOS :" + bodyData);
+          //window.webkit.messageHandlers.iOSNative.postMessage("setMessageBody iOS init"  + bodyData);
       }
       
       function getMessageBodyAOS() {
@@ -81,7 +84,9 @@
       }
       
       function setMessageBodyAOS(bodyData) {
-          Ucware.setMessageBodyAOS("setMessageBody AOS init " + bodyData);
+          tinymce.activeEditor.setContent(bodyData);
+          alert("setMessageBodyAOS :" + bodyData);
+          //Ucware.setMessageBodyAOS("setMessageBody AOS init " + bodyData);
       }
 
     function myCustomOnChangeHandler(inst) {
