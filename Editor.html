@@ -65,7 +65,7 @@
       
     }
       
-      function getMessgaeBodyiOS() {
+      function getMessageBodyiOS() {
           window.webkit.messageHandlers.iOSNative.postMessage(tinymce.activeEditor.getContent("myTextarea"));
       }
       
@@ -73,9 +73,9 @@
           window.webkit.messageHandlers.iOSNative.postMessage("setMessageBody iOS init"  + bodyData);
       }
       
-      
-      function getMessgaeBodyAOS() {
-           Ucware.getMessgaeBodyAOS(
+      message
+      function getMessageBodyAOS() {
+           Ucware.getMessageBodyAOS(
             JSON.stringify(tinymce.activeEditor.getContent("myTextarea"))
           );
           
