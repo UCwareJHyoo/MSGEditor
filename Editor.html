@@ -54,12 +54,6 @@
     }
     var myVar = null;
     function getFromAndroid() {
-        
-      /*
-       Ucware.showToast(
-        JSON.stringify(tinymce.activeEditor.getContent("myTextarea"))
-      );
-       */
       
       window.webkit.messageHandlers.iOSNative.postMessage(tinymce.activeEditor.getContent("myTextarea"));
       
@@ -72,7 +66,7 @@
       
       function setMessageBodyiOS(bodyData) {
           tinymce.activeEditor.setContent(bodyData);
-          //window.webkit.messageHandlers.iOSNative.postMessage("setMessageBody iOS init"  + bodyData);
+          alert("setMessageBodyiOS :" + bodyData);
       }
       
       function getMessageBodyAOS() {
@@ -84,8 +78,7 @@
       
       function setMessageBodyAOS(bodyData) {
           tinymce.activeEditor.setContent(bodyData);
-          alert("setMessageBodyAOS :" + bodyData);
-          //Ucware.setMessageBodyAOS("setMessageBody AOS init " + bodyData);
+          
       }
 
     function myCustomOnChangeHandler(inst) {
